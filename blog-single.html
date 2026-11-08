@@ -137,7 +137,7 @@
       <div class="container">
         <div class="row no-gutters slider-text align-items-center justify-content-center">
           <div class="col-md-9 ftco-animate text-center">
-            <h1 class="mb-3 bread">Tanzania Safari Journal</h1>
+            <h1 class="mb-3 bread" id="article-hero-title">Tanzania Safari Journal</h1>
             <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home <i class="fa-solid fa-chevron-right mx-1"></i></a></span> <span class="mr-2"><a href="blog.html">Journal <i class="fa-solid fa-chevron-right mx-1"></i></a></span> <span>Article <i class="fa-solid fa-chevron-right mx-1"></i></span></p>
           </div>
         </div>
@@ -147,7 +147,7 @@
     <section class="ftco-section ftco-no-pt ftco-no-pb">
       <div class="container">
         <div class="row">
-          <div class="col-lg-8 order-md-last ftco-animate py-md-5 mt-md-5">
+          <div class="col-lg-8 order-md-last ftco-animate py-md-5 mt-md-5" id="article-body-col">
             <h2 class="mb-4" style="font-family: var(--font-heading); color: var(--safari-forest); font-size: 38px;">Tracking the Serengeti Great Migration: A Connoisseur's Guide</h2>
             <p class="lead" style="color: var(--safari-text-dark); font-weight: 500;">Few spectacles in the natural realm rival the thunderous majesty of the Great Wildebeest Migration in Tanzania's Serengeti. Over two million herbivores trace an ancient cyclical odyssey across the savanna, driven by rain, grazing, and primal instinct.</p>
             <p>
@@ -174,14 +174,13 @@
               </div>
             </div>
             
-            <div class="about-author d-flex p-4 rounded" style="background: var(--safari-cream); border-left: 4px solid var(--safari-gold);">
-              <div class="bio mr-4">
-                <img src="images/person_1.jpg" alt="Head Guide" class="img-fluid" style="width: 80px; height: 80px; object-fit: cover; border-radius: 2px; border: 1.5px solid var(--safari-gold);">
+            <div class="about-author d-flex align-items-center p-3 p-md-4 rounded" style="background: var(--safari-cream); border-left: 4px solid var(--safari-gold);">
+              <div class="bio mr-3 mr-md-4" style="flex-shrink: 0;">
+                <img src="images/logo.png" alt="Rihanna Signature Safari" class="img-fluid" style="width: 75px; height: auto; max-height: 55px; object-fit: contain;">
               </div>
               <div class="desc">
-                <h4 style="font-family: var(--font-heading); color: var(--safari-forest); margin-bottom: 4px;">Emmanuel K. Mollel</h4>
-                <span class="text-gold font-weight-bold" style="font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase;">Lead Naturalist &amp; Tanzania Safari Director</span>
-                <p class="mt-2 mb-0" style="font-size: 14.5px; color: var(--safari-text-body);">Emmanuel has spent over 22 years guiding private safaris across the Serengeti, Ngorongoro, Tarangire, and Manyara ecosystems. He holds Tanzania's Gold Guide certification and specializes in predator behavior tracking.</p>
+                <span style="font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--safari-gold); display: block; margin-bottom: 2px;">Article Author</span>
+                <h4 style="font-family: var(--font-heading); color: var(--safari-forest); margin: 0; font-size: 20px;">Rihanna Safari Atelier</h4>
               </div>
             </div>
 
@@ -209,7 +208,7 @@
               </div>
             </div>
 
-            <div class="sidebar-box ftco-animate">
+            <div class="sidebar-box ftco-animate" id="sidebar-recent-chronicles">
               <h3 style="font-family: var(--font-heading); color: var(--safari-forest); font-size: 20px; margin-bottom: 20px;">Recent Chronicles</h3>
               <div class="block-21 mb-4 d-flex">
                 <a class="blog-img mr-3 rounded" style="background-image: url(images/tanzania-serengeti-camp.jpg); width: 80px; height: 80px; min-width: 80px; background-size: cover;"></a>
@@ -357,6 +356,90 @@
   <script src="js/jquery.animateNumber.min.js"></script>
   <script src="js/scrollax.min.js"></script>
   <script src="js/main.js"></script>
+
+  <!-- Dynamic Article Loader from MySQL API -->
+  <script>
+    (function() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const slug = urlParams.get('slug');
+      if (!slug) return;
+
+      fetch('api/journal.php?slug=' + encodeURIComponent(slug))
+        .then(function(res) { return res.json(); })
+        .then(function(data) {
+          if (!data || !data.success || !data.article) return;
+          const art = data.article;
+
+          // Update page title
+          document.title = art.title + ' | Rihanna Signature Safari Journal';
+
+          // Update hero title
+          const heroTitle = document.getElementById('article-hero-title');
+          if (heroTitle) heroTitle.textContent = art.title;
+
+          // Update breadcrumb
+          const breadcrumbs = document.querySelector('.breadcrumbs');
+          if (breadcrumbs) {
+            breadcrumbs.innerHTML = '<span class="mr-2"><a href="index.html">Home <i class="fa-solid fa-chevron-right mx-1"></i></a></span> ' +
+                                    '<span class="mr-2"><a href="blog.html">Journal <i class="fa-solid fa-chevron-right mx-1"></i></a></span> ' +
+                                    '<span>' + art.category + ' <i class="fa-solid fa-chevron-right mx-1"></i></span>';
+          }
+
+          // Update article main content
+          const bodyCol = document.getElementById('article-body-col');
+          if (bodyCol) {
+            let tagsHtml = '';
+            if (art.tags && art.tags.length > 0) {
+              tagsHtml = '<div class="tag-widget post-tag-container mb-5 mt-5"><div class="tagcloud">' +
+                art.tags.map(function(t) { return '<a href="blog.html" class="tag-cloud-link">' + t + '</a>'; }).join(' ') +
+                '</div></div>';
+            }
+
+            let authorHtml = '<div class="about-author d-flex align-items-center p-3 p-md-4 rounded" style="background: var(--safari-cream); border-left: 4px solid var(--safari-gold);">' +
+              '<div class="bio mr-3 mr-md-4" style="flex-shrink: 0;">' +
+                '<img src="images/logo.png" alt="Rihanna Signature Safari" class="img-fluid" style="width: 75px; height: auto; max-height: 55px; object-fit: contain;">' +
+              '</div>' +
+              '<div class="desc">' +
+                '<span style="font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--safari-gold); display: block; margin-bottom: 3px;">Article Author</span>' +
+                '<h4 style="font-family: var(--font-heading); color: var(--safari-forest); margin: 0; font-size: 21px;">' + (art.author || 'Rihanna Safari Atelier') + '</h4>' +
+              '</div>' +
+            '</div>';
+
+            bodyCol.innerHTML = '<div style="margin-bottom: 12px; font-size: 11.5px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: var(--safari-gold);">' +
+                                  art.category + ' • ' + art.formatted_date + ' • ' + art.read_time +
+                                '</div>' +
+                                '<h2 class="mb-4" style="font-family: var(--font-heading); color: var(--safari-forest); font-size: 38px; line-height: 1.25;">' + art.title + '</h2>' +
+                                '<div class="mb-4"><img src="' + art.featured_image + '" alt="' + art.title + '" class="img-fluid rounded" style="border: 1px solid rgba(200, 150, 62, 0.25); width: 100%; max-height: 480px; object-fit: cover;"></div>' +
+                                '<div class="article-rich-content" style="font-size: 16px; line-height: 1.8; color: var(--safari-text-body);">' +
+                                  art.content +
+                                '</div>' +
+                                tagsHtml +
+                                authorHtml;
+          }
+
+          // Update sidebar related articles if available
+          if (data.related && data.related.length > 0) {
+            const relatedContainer = document.getElementById('sidebar-recent-chronicles');
+            if (relatedContainer) {
+              let relHtml = '<h3 style="font-family: var(--font-heading); color: var(--safari-forest); font-size: 20px; margin-bottom: 20px;">Recent Chronicles</h3>';
+              data.related.forEach(function(r) {
+                relHtml += '<div class="block-21 mb-4 d-flex">' +
+                  '<a href="blog-single.html?slug=' + encodeURIComponent(r.slug) + '" class="blog-img mr-3 rounded" style="background-image: url(' + r.featured_image + '); width: 80px; height: 80px; min-width: 80px; background-size: cover; border-radius: 2px;"></a>' +
+                  '<div class="text">' +
+                    '<h4 class="heading" style="font-size: 14px; line-height: 1.4;"><a href="blog-single.html?slug=' + encodeURIComponent(r.slug) + '" style="color: var(--safari-forest);">' + r.title + '</a></h4>' +
+                    '<div class="meta" style="font-size: 11.5px; color: var(--safari-gold);"><i class="fa-solid fa-calendar mr-1"></i> ' + r.formatted_date + '</div>' +
+                  '</div>' +
+                '</div>';
+              });
+              relatedContainer.innerHTML = relHtml;
+            }
+          }
+        })
+        .catch(function(err) {
+          console.log('Error loading dynamic article', err);
+        });
+    })();
+  </script>
     
   </body>
 </html>

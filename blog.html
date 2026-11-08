@@ -146,7 +146,12 @@
 
     <section class="ftco-section">
       <div class="container">
-        <div class="row d-flex">
+        <!-- Interactive Dynamic Category Filter Bar -->
+        <div class="journal-filter-pills-wrap mb-4 pb-2" id="journal-category-nav" style="display: none;">
+          <div class="d-flex align-items-center flex-wrap" style="gap: 8px;" id="journal-category-buttons"></div>
+        </div>
+
+        <div class="row d-flex" id="journal-articles-grid">
           <div class="col-md-4 d-flex ftco-animate">
           	<div class="blog-entry justify-content-end">
               <a href="blog-single.html" class="block-20" style="background-image: url('images/tanzania-serengeti-migration.jpg');">
@@ -162,7 +167,6 @@
               		</div>
               	</div>
                 <h3 class="heading"><a href="blog-single.html">Tracking the Serengeti Great Migration: A Connoisseur's Guide</a></h3>
-                <p>Timing the Mara and Grumeti river crossings, private fly-in airstrips, and secluded private tented camps for viewing the world's greatest spectacle.</p>
               </div>
             </div>
           </div>
@@ -181,7 +185,6 @@
               		</div>
               	</div>
                 <h3 class="heading"><a href="blog-single.html">The Art of the Bush Camp: Redefining Ultra-Luxury</a></h3>
-                <p>How handcrafted copper tubs, vintage campaign furnishings, and private camp chefs elevate wilderness living in Tanzania.</p>
               </div>
             </div>
           </div>
@@ -200,7 +203,6 @@
               		</div>
               	</div>
                 <h3 class="heading"><a href="blog-single.html">Bush to Beach: The Ultimate Tanzania Safari &amp; Zanzibar Pairing</a></h3>
-                <p>How a private air transfer seamlessly bridges the raw drama of the Serengeti with barefoot Indian Ocean luxury.</p>
               </div>
             </div>
           </div>
@@ -220,7 +222,6 @@
               		</div>
               	</div>
                 <h3 class="heading"><a href="blog-single.html">Inside Ngorongoro: Exploring the Caldera Sanctuary</a></h3>
-                <p>Descending 2,000 feet into the world's largest unbroken volcanic caldera for unprecedented Big Five density.</p>
               </div>
             </div>
           </div>
@@ -239,7 +240,6 @@
               		</div>
               	</div>
                 <h3 class="heading"><a href="blog-single.html">The Ancient Baobabs &amp; Super-Herds of Tarangire</a></h3>
-                <p>Encountering massive elephant families in the dry riverbeds beneath thousand-year-old baobab trees in northern Tanzania.</p>
               </div>
             </div>
           </div>
@@ -258,21 +258,20 @@
               		</div>
               	</div>
                 <h3 class="heading"><a href="blog-single.html">The Pink Flamingos &amp; Mahogany Forests of Manyara</a></h3>
-                <p>The ecological marvel of Lake Manyara, nestled at the base of the Great Rift Valley western escarpment.</p>
               </div>
             </div>
           </div>
         </div>
 
-        <div class="row mt-5">
+        <div class="row mt-5" id="journal-pagination-wrap">
           <div class="col text-center">
-            <div class="block-27">
+            <div class="block-27" id="journal-pagination">
               <ul>
-                <li><a href="#"><i class="fa-solid fa-chevron-left"></i></a></li>
+                <li class="disabled"><span><i class="fa-solid fa-chevron-left"></i></span></li>
                 <li class="active"><span>1</span></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#"><i class="fa-solid fa-chevron-right"></i></a></li>
+                <li><a href="javascript:void(0)" data-page="2">2</a></li>
+                <li><a href="javascript:void(0)" data-page="3">3</a></li>
+                <li><a href="javascript:void(0)" data-page="2"><i class="fa-solid fa-chevron-right"></i></a></li>
               </ul>
             </div>
           </div>
@@ -398,6 +397,243 @@
   <script src="js/jquery.animateNumber.min.js"></script>
   <script src="js/scrollax.min.js"></script>
   <script src="js/main.js"></script>
+
+  <!-- Dynamic Journal Loader with Real Functioning Pagination from MySQL API -->
+  <script>
+    (function() {
+      const grid = document.getElementById('journal-articles-grid');
+      const catNav = document.getElementById('journal-category-nav');
+      const catButtonsWrap = document.getElementById('journal-category-buttons');
+      const paginationWrap = document.getElementById('journal-pagination-wrap');
+      const paginationEl = document.getElementById('journal-pagination');
+      if (!grid) return;
+
+      const itemsPerPage = 6;
+      let allArticles = [];
+      let filteredArticles = [];
+      let currentPage = 1;
+      let currentCat = 'all';
+
+      // Parse initial URL parameters
+      const urlParams = new URLSearchParams(window.location.search);
+      const initialPage = parseInt(urlParams.get('page'), 10);
+      if (!isNaN(initialPage) && initialPage > 0) {
+        currentPage = initialPage;
+      }
+      const initialCat = urlParams.get('category');
+      if (initialCat) {
+        currentCat = initialCat;
+      }
+
+      function updateUrl() {
+        const url = new URL(window.location);
+        if (currentPage > 1) {
+          url.searchParams.set('page', currentPage);
+        } else {
+          url.searchParams.delete('page');
+        }
+        if (currentCat && currentCat !== 'all') {
+          url.searchParams.set('category', currentCat);
+        } else {
+          url.searchParams.delete('category');
+        }
+        window.history.replaceState({ page: currentPage, category: currentCat }, '', url);
+      }
+
+      function renderPagination(totalItems, page) {
+        if (!paginationEl) return;
+        const totalPages = Math.ceil(totalItems / itemsPerPage);
+
+        if (totalPages <= 0) {
+          if (paginationWrap) paginationWrap.style.display = 'none';
+          return;
+        }
+
+        if (paginationWrap) paginationWrap.style.display = '';
+
+        let html = '<ul>';
+
+        // Prev chevron button (<)
+        if (page > 1) {
+          html += '<li><a href="javascript:void(0)" class="journal-page-link" data-page="' + (page - 1) + '" aria-label="Previous Page"><i class="fa-solid fa-chevron-left"></i></a></li>';
+        } else {
+          html += '<li class="disabled"><span><i class="fa-solid fa-chevron-left"></i></span></li>';
+        }
+
+        // Page number square buttons (1, 2, 3...)
+        for (let i = 1; i <= totalPages; i++) {
+          if (i === page) {
+            html += '<li class="active"><span>' + i + '</span></li>';
+          } else {
+            html += '<li><a href="javascript:void(0)" class="journal-page-link" data-page="' + i + '">' + i + '</a></li>';
+          }
+        }
+
+        // Next chevron button (>)
+        if (page < totalPages) {
+          html += '<li><a href="javascript:void(0)" class="journal-page-link" data-page="' + (page + 1) + '" aria-label="Next Page"><i class="fa-solid fa-chevron-right"></i></a></li>';
+        } else {
+          html += '<li class="disabled"><span><i class="fa-solid fa-chevron-right"></i></span></li>';
+        }
+
+        html += '</ul>';
+        paginationEl.innerHTML = html;
+
+        // Bind interactive click handlers to all pagination links
+        paginationEl.querySelectorAll('.journal-page-link').forEach(function(link) {
+          link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetPage = parseInt(this.getAttribute('data-page'), 10);
+            if (!isNaN(targetPage) && targetPage !== currentPage) {
+              goToPage(targetPage, true);
+            }
+          });
+        });
+      }
+
+      function renderCurrentPage(shouldScroll) {
+        const totalPages = Math.ceil(filteredArticles.length / itemsPerPage);
+        if (totalPages > 0 && currentPage > totalPages) {
+          currentPage = totalPages;
+        }
+        if (currentPage < 1) currentPage = 1;
+
+        if (filteredArticles.length === 0) {
+          grid.innerHTML = '<div class="col-12 text-center py-5"><p style="color: var(--safari-text-muted); font-size: 16px;">No chronicles found in this category.</p></div>';
+          renderPagination(0, 1);
+          return;
+        }
+
+        const startIndex = (currentPage - 1) * itemsPerPage;
+        const pageItems = filteredArticles.slice(startIndex, startIndex + itemsPerPage);
+
+        grid.innerHTML = pageItems.map(function(art) {
+          const link = 'blog-single.html?slug=' + encodeURIComponent(art.slug);
+          const day = art.date_parts ? art.date_parts.day : '01';
+          const yr = art.date_parts ? art.date_parts.year : '2026';
+          const mos = art.date_parts ? art.date_parts.month : 'Nov';
+
+          return '<div class="col-md-4 d-flex mb-4">' +
+                   '<div class="blog-entry justify-content-end w-100">' +
+                     '<a href="' + link + '" class="block-20" style="background-image: url(\'' + art.featured_image + '\'); position: relative;">' +
+                       '<span style="position: absolute; top: 12px; left: 12px; background: rgba(11, 17, 11, 0.88); color: var(--safari-gold); font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 1.4px; padding: 4px 10px; border: 1px solid rgba(200, 150, 62, 0.4); border-radius: 2px;">' + art.category + '</span>' +
+                     '</a>' +
+                     '<div class="text mt-3 float-right d-block">' +
+                       '<div class="d-flex align-items-center mb-4 topp">' +
+                         '<div class="one"><span class="day">' + day + '</span></div>' +
+                         '<div class="two"><span class="yr">' + yr + '</span><span class="mos">' + mos + '</span></div>' +
+                       '</div>' +
+                       '<h3 class="heading"><a href="' + link + '">' + art.title + '</a></h3>' +
+                       '<div class="d-flex align-items-center justify-content-between mt-3 pt-3 border-top" style="font-size: 12px; color: var(--safari-text-muted);">' +
+                         '<span><i class="fa-solid fa-clock mr-1" style="color: var(--safari-gold);"></i>' + art.read_time + '</span>' +
+                         '<a href="' + link + '" style="color: var(--safari-gold); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; font-size: 11px;">Read Article &rarr;</a>' +
+                       '</div>' +
+                     '</div>' +
+                   '</div>' +
+                 '</div>';
+        }).join('');
+
+        renderPagination(filteredArticles.length, currentPage);
+        updateUrl();
+
+        if (shouldScroll) {
+          const targetEl = document.getElementById('journal-category-nav') || grid;
+          const sectionTop = targetEl.getBoundingClientRect().top + window.pageYOffset - 80;
+          window.scrollTo({ top: sectionTop, behavior: 'smooth' });
+        }
+      }
+
+      function goToPage(page, shouldScroll) {
+        currentPage = page;
+        renderCurrentPage(shouldScroll);
+      }
+
+      function applyFilter(category) {
+        currentCat = category;
+        currentPage = 1;
+        if (currentCat === 'all') {
+          filteredArticles = allArticles.slice();
+        } else {
+          filteredArticles = allArticles.filter(function(a) {
+            return a.category === currentCat;
+          });
+        }
+        renderCurrentPage(false);
+      }
+
+      // Initial Fetch from MySQL Journal API (loads all published articles)
+      fetch('api/journal.php?limit=50')
+        .then(function(res) { return res.json(); })
+        .then(function(data) {
+          if (data && data.success && data.articles && data.articles.length > 0) {
+            allArticles = data.articles;
+            filteredArticles = allArticles.slice();
+
+            // Render Category Filter Navigation
+            if (data.categories && data.categories.length > 1 && catNav && catButtonsWrap) {
+              catNav.style.display = 'block';
+              let html = '<button type="button" class="btn btn-sm ' + (currentCat === 'all' ? 'btn-outline-warning active' : 'btn-outline-secondary') + ' mr-2 mb-2" data-cat="all" style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; border-radius: 20px; padding: 6px 14px;">All Stories (' + allArticles.length + ')</button>';
+              data.categories.forEach(function(c) {
+                const isActive = (c.category === currentCat);
+                html += '<button type="button" class="btn btn-sm ' + (isActive ? 'btn-outline-warning active' : 'btn-outline-secondary') + ' mr-2 mb-2" data-cat="' + c.category + '" style="font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.8px; border-radius: 20px; padding: 6px 14px;">' + c.category + ' (' + c.count + ')</button>';
+              });
+              catButtonsWrap.innerHTML = html;
+
+              catButtonsWrap.querySelectorAll('button').forEach(function(btn) {
+                btn.addEventListener('click', function() {
+                  catButtonsWrap.querySelectorAll('button').forEach(function(b) {
+                    b.classList.remove('btn-outline-warning', 'active');
+                    b.classList.add('btn-outline-secondary');
+                  });
+                  this.classList.remove('btn-outline-secondary');
+                  this.classList.add('btn-outline-warning', 'active');
+                  const cat = this.getAttribute('data-cat');
+                  applyFilter(cat);
+                });
+              });
+            }
+
+            if (currentCat !== 'all') {
+              filteredArticles = allArticles.filter(function(a) { return a.category === currentCat; });
+            }
+
+            renderCurrentPage(false);
+          }
+        })
+        .catch(function(err) {
+          console.warn('API error, using static pagination fallback', err);
+        });
+
+      // Handle browser back/forward history buttons
+      window.addEventListener('popstate', function(e) {
+        const p = new URLSearchParams(window.location.search);
+        const pageFromUrl = parseInt(p.get('page'), 10) || 1;
+        const catFromUrl = p.get('category') || 'all';
+
+        if (catFromUrl !== currentCat) {
+          currentCat = catFromUrl;
+          if (catButtonsWrap) {
+            catButtonsWrap.querySelectorAll('button').forEach(function(btn) {
+              if (btn.getAttribute('data-cat') === currentCat) {
+                btn.classList.add('btn-outline-warning', 'active');
+                btn.classList.remove('btn-outline-secondary');
+              } else {
+                btn.classList.remove('btn-outline-warning', 'active');
+                btn.classList.add('btn-outline-secondary');
+              }
+            });
+          }
+          if (currentCat === 'all') {
+            filteredArticles = allArticles.slice();
+          } else {
+            filteredArticles = allArticles.filter(function(a) { return a.category === currentCat; });
+          }
+        }
+        currentPage = pageFromUrl;
+        renderCurrentPage(false);
+      });
+    })();
+  </script>
     
   </body>
 </html>

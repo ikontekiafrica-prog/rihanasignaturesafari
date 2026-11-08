@@ -1226,8 +1226,14 @@ ul, ol {
    SECTIONS & HEADINGS
    =================================================================== */
 .ftco-section {
-  padding: 6em 0;
+  padding: 3.5em 0;
   position: relative;
+}
+
+@media (max-width: 767.98px) {
+  .ftco-section {
+    padding: 2.5em 0;
+  }
 }
 
 .ftco-no-pt {
@@ -1240,22 +1246,22 @@ ul, ol {
 
 .heading-section .subheading {
   font-family: var(--font-sans);
-  font-size: 12.5px;
+  font-size: 12px;
   font-weight: 700;
-  letter-spacing: 3.5px;
+  letter-spacing: 3px;
   text-transform: uppercase;
   color: var(--safari-gold);
   display: block;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
 
 .heading-section h2 {
   font-family: var(--font-heading);
-  font-size: 40px;
+  font-size: 38px;
   font-weight: 700;
   color: var(--safari-forest);
   line-height: 1.25;
-  margin-bottom: 20px;
+  margin-bottom: 14px;
 }
 
 .heading-section.text-center h2::after {
@@ -1264,14 +1270,14 @@ ul, ol {
   width: 60px;
   height: 2px;
   background: var(--safari-gold);
-  margin: 16px auto 0;
+  margin: 12px auto 0;
   border-radius: 0;
 }
 
 .heading-section p {
   color: var(--safari-text-body);
-  font-size: 16px;
-  line-height: 1.85;
+  font-size: 15.5px;
+  line-height: 1.7;
 }
 
 /* ===================================================================
@@ -1279,7 +1285,7 @@ ul, ol {
    =================================================================== */
 .services-section {
   background-color: var(--safari-cream) !important;
-  padding: 6em 0;
+  padding: 3.5em 0;
   position: relative;
 }
 
@@ -1344,7 +1350,7 @@ ul, ol {
    COUNTER STATS
    =================================================================== */
 .ftco-counter {
-  padding: 6em 0;
+  padding: 3.8em 0;
   position: relative;
   background-size: cover;
   background-position: center center;
@@ -1643,7 +1649,7 @@ ul, ol {
   position: relative;
   background-size: cover;
   background-position: center center;
-  padding: 6em 0;
+  padding: 3.8em 0;
   overflow: hidden;
   max-width: 100%;
 }
@@ -1744,8 +1750,11 @@ ul, ol {
   overflow: hidden;
   border: 1px solid rgba(200, 150, 62, 0.18);
   box-shadow: var(--safari-shadow-sm);
-  margin-bottom: 30px;
+  margin-bottom: 24px;
   transition: var(--safari-transition);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .blog-entry:hover {
@@ -1756,10 +1765,11 @@ ul, ol {
 
 .blog-entry .block-20 {
   display: block;
-  height: 250px;
+  height: 230px;
   background-size: cover;
   background-position: center center;
   transition: transform 0.5s ease;
+  flex-shrink: 0;
 }
 
 .blog-entry:hover .block-20 {
@@ -1767,18 +1777,21 @@ ul, ol {
 }
 
 .blog-entry .text {
-  padding: 26px !important;
+  padding: 22px 24px !important;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
 }
 
 .blog-entry .topp {
   display: flex;
   align-items: center;
-  margin-bottom: 16px;
+  margin-bottom: 14px;
 }
 
 .blog-entry .topp .one .day {
   font-family: var(--font-heading);
-  font-size: 32px;
+  font-size: 30px;
   font-weight: 700;
   color: var(--safari-gold);
   line-height: 1;
@@ -1793,9 +1806,14 @@ ul, ol {
   display: block;
 }
 
+.blog-entry .heading {
+  margin-bottom: 12px;
+  min-height: 48px;
+}
+
 .blog-entry .heading a {
   font-family: var(--font-heading);
-  font-size: 20px;
+  font-size: 19px;
   font-weight: 700;
   color: var(--safari-forest);
   line-height: 1.35;
@@ -1803,6 +1821,10 @@ ul, ol {
 
 .blog-entry .heading a:hover {
   color: var(--safari-gold);
+}
+
+.blog-entry .border-top {
+  margin-top: auto !important;
 }
 
 /* Tag cloud - Clean Editorial Rectangular Badges */
@@ -1847,6 +1869,18 @@ ul, ol {
   background: var(--safari-gold);
   color: #fff;
   border: 1px solid var(--safari-gold);
+}
+.block-27 ul li a {
+  cursor: pointer;
+}
+.block-27 ul li.disabled span,
+.block-27 ul li.disabled a {
+  opacity: 0.35;
+  cursor: not-allowed;
+  color: #999999;
+  border-color: #eeeeee;
+  background: #f9f9f9;
+  pointer-events: none;
 }
 .block-27 ul li a:hover {
   background: var(--safari-forest);
@@ -2775,6 +2809,7 @@ select.form-control option:disabled {
 
 .pkg-actions-row {
   margin-top: auto;
+  padding-top: 14px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 10px;

@@ -275,8 +275,37 @@ if (!$mailSent) {
     $mailSent = @mail($atelierEmail, $subject, $atelierHtml, $headers);
 }
 
-// Log inquiry to file for record integrity
+// Log inquiry to database and fallback file for record integrity
+$refNo = 'RIH-' . strtoupper(substr(uniqid(), -6));
+try {
+    require_once __DIR__ . '/portal/includes/config.php';
+    $db = getDbConnection();
+    $stmtInq = $db->prepare("INSERT INTO `inquiries` (
+        `reference_no`, `full_name`, `email`, `phone`, `country`, `contact_method`,
+        `package_name`, `package_price`, `travel_dates`, `adults`, `children`,
+        `special_notes`, `status`, `ip_address`, `created_at`
+    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'new', ?, NOW())");
+    $stmtInq->execute([
+        $refNo,
+        $fullName,
+        $email,
+        $phone,
+        $country,
+        'Website Form / WhatsApp',
+        $packageTitle,
+        $packagePrice,
+        $travelDates,
+        $adults,
+        $children,
+        $message,
+        $clientIp
+    ]);
+} catch (\Throwable $e) {
+    @file_put_contents(__DIR__ . '/portal/uploads/db_errors.log', date('Y-m-d H:i:s') . ' Inq error: ' . $e->getMessage() . PHP_EOL, FILE_APPEND);
+}
+
 $logEntry = [
+    'ref'      => $refNo,
     'time'     => $submissionTime,
     'package'  => $packageTitle,
     'price'    => $packagePrice,
