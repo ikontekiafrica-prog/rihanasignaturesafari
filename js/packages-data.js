@@ -1,5 +1,5 @@
 /**
- * RIHANA SIGNATURE SAFARI - OFFICIAL LUXURY EXPEDITIONS DATASET
+ * RIHANNA SIGNATURE SAFARI - OFFICIAL LUXURY EXPEDITIONS DATASET
  * 35 Curated Luxury Packages: 20 Tanzania Packages & 15 Kenya Packages
  * All pricing in USD per person sharing based on private 5-star operations.
  */

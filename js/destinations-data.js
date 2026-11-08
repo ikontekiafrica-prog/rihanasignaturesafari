@@ -1,5 +1,5 @@
 /**
- * RIHANA SIGNATURE SAFARI - OFFICIAL SANCTUARY DESTINATIONS DATASET
+ * RIHANNA SIGNATURE SAFARI - OFFICIAL SANCTUARY DESTINATIONS DATASET
  * Curated from our 35 Signature Safari Packages
  * Covers all prime wildlife sanctuaries and island escapes across Tanzania and Kenya.
  */
@@ -31,7 +31,7 @@ const SAFARI_DESTINATIONS = [
       title: "The Great Wildebeest Migration & River Crossings",
       text: "Over 1.5 million wildebeest accompanied by 250,000 zebras and gazelles undertake an uninterrupted circular odyssey tracking seasonal rains and nutrient-dense grass. Depending on your travel dates, you can witness dramatic predator ambush crossings at the Mara and Grumeti rivers (July to October) or the explosive synchronized calving season across the southern Ndutu plains (January to March) where 8,000 calves are born daily."
     },
-    authorityText: "Serengeti National Park is strictly conserved under the stewardship of TANAPA (Tanzania National Parks Authority) and protected as a UNESCO World Heritage Site. Rihana Signature Safari operates fully licensed private safaris under TATO (Tanzania Association of Tour Operators) standards with 24/7 AMREF Flying Doctors evacuation coverage.",
+    authorityText: "Serengeti National Park is strictly conserved under the stewardship of TANAPA (Tanzania National Parks Authority) and protected as a UNESCO World Heritage Site. Rihanna Signature Safari operates fully licensed private safaris under TATO (Tanzania Association of Tour Operators) standards with 24/7 AMREF Flying Doctors evacuation coverage.",
     wildlifeHighlights: ["The Great Migration (1.5M Wildebeest & Zebras)", "Apex Lion Prides & Tree-Climbing Lions", "Leopards of Seronera Kopjes", "Cheetah Coalitions on the Open Plains", "Colossal Nile Crocodiles"],
     seasonalGuide: {
       drySeason: "June to October: Premier big game tracking. Grasses graze short, waterholes dry up, and herds gather tightly along permanent rivers. Optimal window for dramatic Mara River crossings.",
@@ -51,7 +51,7 @@ const SAFARI_DESTINATIONS = [
       { q: "What should I pack for my Serengeti expedition?", a: "Neutral khaki/beige bush attire, a warm fleece for crisp sunrise drives, polarising sunglasses, broad-brimmed safari hat, and 8x42 binoculars. Soft luggage under 15kg is required for bush flights." }
     ],
     bestTimeToVisit: "Year-Round: July–October (Mara River Crossings), December–March (Southern Ndutu Calving Season), April–June (Western Grumeti Migration).",
-    whyChooseUs: "At Rihana Signature Safari, we do not subject our guests to grueling 8-hour highway transfers. We utilize private Cessna bush flights landing directly on secluded Serengeti airstrips (Seronera, Kogatende, Grumeti, Ndutu). Our customized 4x4 Land Cruisers feature 360-degree pop-up photographic roofs, private onboard refrigerated refreshments, and are captained by Gold-certified naturalist guides with over 15 years of tracking expertise.",
+    whyChooseUs: "At Rihanna Signature Safari, we do not subject our guests to grueling 8-hour highway transfers. We utilize private Cessna bush flights landing directly on secluded Serengeti airstrips (Seronera, Kogatende, Grumeti, Ndutu). Our customized 4x4 Land Cruisers feature 360-degree pop-up photographic roofs, private onboard refrigerated refreshments, and are captained by Gold-certified naturalist guides with over 15 years of tracking expertise.",
     ourPromise: "100% private, unhurried game viewing. We maintain off-road traversing privileges in premier private conservancies (such as Singita Grumeti and Mwiba) to position you away from tourist vehicle crowds. Every guest is covered with 24/7 AMREF Flying Doctors emergency medical evacuation, and our itineraries directly support anti-poaching ranger units and community education."
   },
   {
@@ -94,7 +94,7 @@ const SAFARI_DESTINATIONS = [
     faqs: [
       { q: "Are vehicle descent permits time-limited inside Ngorongoro?", a: "Yes, NCAA environmental regulations limit crater floor game drives to a maximum 6-hour permit window to prevent vehicular congestion and preserve the fragile caldera floor." },
       { q: "Can giraffes be seen on the crater floor?", a: "No. Giraffes cannot negotiate the steep, 600-meter rocky caldera descent walls due to their leg anatomy, but they roam in abundance on the outer crater rim highlands." },
-      { q: "Where do Rihana guests stay when visiting Ngorongoro?", a: "We house our guests exclusively in premier rim lodges like andBeyond Ngorongoro Crater Lodge, The Highlands geodesic domes, or elegant Karatu private coffee estate villas." }
+      { q: "Where do Rihanna guests stay when visiting Ngorongoro?", a: "We house our guests exclusively in premier rim lodges like andBeyond Ngorongoro Crater Lodge, The Highlands geodesic domes, or elegant Karatu private coffee estate villas." }
     ],
     bestTimeToVisit: "Outstanding year-round. Wildlife remains resident inside the caldera floor regardless of season.",
     whyChooseUs: "We secure exclusive early-morning first-gate descent permits, allowing you to reach the crater floor as the sun crests the rim before the day visitors arrive. We arrange silver-service white-linen bush picnics beside private hippo pools, and house our guests in world-renowned crater rim properties such as andBeyond Ngorongoro Crater Lodge and The Highlands geodesic domes.",
@@ -123,7 +123,7 @@ const SAFARI_DESTINATIONS = [
       title: "Mnemba Atoll Coral Reefs & Private Island Villas",
       text: "Surrounded by a protected marine sanctuary, Mnemba Atoll offers world-class scuba diving and snorkeling with green sea turtles, bottlenose dolphins, and hundreds of tropical reef species, paired with total barefoot luxury."
     },
-    authorityText: "Marine habitats around Mnemba, Chumbe, and Menai Bay are protected marine conservation reserves. Rihana Signature Safari arranges certified ethical dolphin viewing and reef conservation excursions.",
+    authorityText: "Marine habitats around Mnemba, Chumbe, and Menai Bay are protected marine conservation reserves. Rihanna Signature Safari arranges certified ethical dolphin viewing and reef conservation excursions.",
     wildlifeHighlights: ["Green Sea Turtles & Bottlenose Dolphins", "Mnemba Atoll Coral Reef Marine Sanctuaries", "Giant Coconut Crabs of Chumbe", "Red Colobus Monkeys in Jozani Forest", "Humpback Whales (Seasonal)"],
     seasonalGuide: {
       drySeason: "June to October: Crystal-clear diving visibility, calm seas, and balmy breezes make this the quintessential beach holiday season.",
@@ -140,7 +140,7 @@ const SAFARI_DESTINATIONS = [
     faqs: [
       { q: "Is Zanzibar easily combined with a Serengeti safari?", a: "Yes, this is our most popular signature pairing. Guests can fly directly from a Serengeti bush airstrip to Zanzibar in under 2 hours with zero road hassle." },
       { q: "Which coast has the best beaches in Zanzibar?", a: "The northeast coast (Matemwe, Nungwi, Kendwa) offers deep turquoise water that is minimally affected by low tides, alongside ultra-private cliffside villas." },
-      { q: "What luxury properties does Rihana partner with in Zanzibar?", a: "We curate stays at Zuri Zanzibar, Zanzibar White Sand Luxury Villas (Relais & Châteaux), The Palms, and exclusive private island buyouts at Mnemba Island." }
+      { q: "What luxury properties does Rihanna partner with in Zanzibar?", a: "We curate stays at Zuri Zanzibar, Zanzibar White Sand Luxury Villas (Relais & Châteaux), The Palms, and exclusive private island buyouts at Mnemba Island." }
     ],
     bestTimeToVisit: "June to March. Calm sea conditions, crystal-clear diving visibility, and warm tropical sunshine.",
     whyChooseUs: "We skip crowded tourist hotels and curate only five-star luxury sanctuaries: private oceanfront villas with plunge pools at Zuri Zanzibar and White Sand Villas, Relais & Châteaux barefoot luxury on private Mnemba Island, and underwater bedroom suites at The Manta Resort on Pemba. Transfers are executed via private air charter and handcrafted wooden dhow yachts.",
@@ -186,7 +186,7 @@ const SAFARI_DESTINATIONS = [
     faqs: [
       { q: "Is Tarangire worth visiting outside the dry season?", a: "Yes! While dry season offers the densest elephant concentrations, the green season brings incredible birdlife, lush landscapes, and total exclusivity." },
       { q: "How many elephants can one see on a single game drive?", a: "During peak months (July to October), guests routinely encounter hundreds of elephants daily in mega-families drinking and bathing." },
-      { q: "Where do Rihana guests stay in Tarangire?", a: "We partner with sanctuary properties like Sanctuary Swala, Chem Chem Lodge, and Oliver's Camp for private concession traversing privileges." }
+      { q: "Where do Rihanna guests stay in Tarangire?", a: "We partner with sanctuary properties like Sanctuary Swala, Chem Chem Lodge, and Oliver's Camp for private concession traversing privileges." }
     ],
     bestTimeToVisit: "June to November (peak dry season concentration along the river), though green season offers spectacular emerald landscapes and newborn wildlife.",
     whyChooseUs: "We partner exclusively with private concession lodges like Chem Chem and Sanctuary Swala, granting our guests night game drive permissions, private walking safaris with authentic Maasai trackers, and sunrise champagne breakfasts elevated on private baobab platforms.",
@@ -261,7 +261,7 @@ const SAFARI_DESTINATIONS = [
       title: "Uhuru Peak Sunrise & Glacial Caldera",
       text: "Reaching the crater rim at Stella Point or Uhuru Peak as the equatorial sunrise breaks above the clouds reveals ancient glaciers and the boundless curve of Africa below."
     },
-    authorityText: "Kilimanjaro National Park is protected under TANAPA and KINAPA. Rihana Signature Safari adheres strictly to ethical porter standards certified by the Kilimanjaro Porters Assistance Project (KPAP).",
+    authorityText: "Kilimanjaro National Park is protected under TANAPA and KINAPA. Rihanna Signature Safari adheres strictly to ethical porter standards certified by the Kilimanjaro Porters Assistance Project (KPAP).",
     wildlifeHighlights: ["Black & White Colobus Monkeys in Rainforest Zone", "Kilimanjaro Tree Hyrax", "Four-Striped Mice in Alpine Heath", "Abbott's Starlings", "Lammergeier Vultures"],
     seasonalGuide: {
       drySeason: "June to October: Clear skies, minimal precipitation, and outstanding summit conditions.",
@@ -277,7 +277,7 @@ const SAFARI_DESTINATIONS = [
     howToReach: "Kilimanjaro International Airport (JRO) is located just 45 minutes from Moshi and Arusha trailheads, with direct international flights from Europe and the Middle East.",
     faqs: [
       { q: "What is the recommended route for summit success?", a: "We strongly recommend the 7 or 8-day Lemosho or Machame routes for optimal acclimatization and a 95%+ summit success rate." },
-      { q: "What medical safety equipment is carried?", a: "Every Rihana climb is equipped with hyperbaric chambers, emergency oxygen, pulse oximeters, and Wilderness First Responder certified chief guides." },
+      { q: "What medical safety equipment is carried?", a: "Every Rihanna climb is equipped with hyperbaric chambers, emergency oxygen, pulse oximeters, and Wilderness First Responder certified chief guides." },
       { q: "What level of fitness is required?", a: "Kilimanjaro is a trekking peak requiring no technical mountaineering gear, but good cardiovascular stamina and mental endurance are required." }
     ],
     bestTimeToVisit: "January to March and June to October. Dry weather, clear skies, and optimum trekking safety.",
@@ -370,7 +370,7 @@ const SAFARI_DESTINATIONS = [
     faqs: [
       { q: "Why choose Ruaha over other parks?", a: "Ruaha offers unrivaled solitude. With fewer than 30 safari vehicles in a park the size of New Jersey, you will rarely see another vehicle all day." },
       { q: "Is Mafia Island easy to combine with Ruaha?", a: "Yes, our private bush-to-beach charters connect Ruaha airstrips directly to Mafia Island runways in approximately 90 minutes." },
-      { q: "What luxury lodges does Rihana recommend?", a: "We host guests at Jabali Ridge (perched on granite kopjes), Kwihala Camp, and Pole Pole eco-lodge on Mafia Island." }
+      { q: "What luxury lodges does Rihanna recommend?", a: "We host guests at Jabali Ridge (perched on granite kopjes), Kwihala Camp, and Pole Pole eco-lodge on Mafia Island." }
     ],
     bestTimeToVisit: "June to October for Ruaha's predator drama; October to March for Mafia Island's whale shark swimming season.",
     whyChooseUs: "We curate architectural luxury at Jabali Ridge, perched dramatically on massive granite boulders, paired with the barefoot Italian-run eco-resort Pole Pole on Mafia Island. Private air charters link the bush to the ocean with zero road transit.",
@@ -420,7 +420,7 @@ const SAFARI_DESTINATIONS = [
     faqs: [
       { q: "What is the advantage of private conservancies over the main reserve?", a: "Private conservancies (Mara North, Olare Motorogi) strictly ban public minibuses, enforce low vehicle-to-acreage ratios, and permit off-roading and night game drives." },
       { q: "When is the best time to see the Mara river crossings?", a: "Typically July through October, with August and September offering peak crossing frequency across the Mara and Talek rivers." },
-      { q: "Where do Rihana Signature Safari guests stay?", a: "We curate stays at world-class camps including Sir Richard Branson's Mahali Mzuri, Mara Plains Camp (Great Plains Conservation), and Angama Mara." }
+      { q: "Where do Rihanna Signature Safari guests stay?", a: "We curate stays at world-class camps including Sir Richard Branson's Mahali Mzuri, Mara Plains Camp (Great Plains Conservation), and Angama Mara." }
     ],
     bestTimeToVisit: "July to October for Great Migration crossings; January to March for exceptional predator tracking in private conservancies.",
     whyChooseUs: "We locate our guests inside exclusive private conservancies (Mara North, Olare Motorogi, Olderkesi) where public tour vans are prohibited. Enjoy off-road tracking, night spotlight game drives, dawn hot air balloon flights with champagne breakfasts, and stays at world-class camps like Sir Richard Branson's Mahali Mzuri and Great Plains' Mara Plains Camp.",
@@ -466,7 +466,7 @@ const SAFARI_DESTINATIONS = [
     faqs: [
       { q: "Is Mount Kilimanjaro visible every day?", a: "Kilimanjaro is visible during early mornings and late afternoons on most dry season days before thermal cloud cover forms midday." },
       { q: "Can we see the Big Five in Amboseli?", a: "Elephants, lions, leopards, and buffalo are present. Rhinos are not resident in Amboseli and are tracked in neighboring Tsavo or Lewa." },
-      { q: "Where do Rihana guests stay in Amboseli?", a: "We curate stays at Tortilis Camp (private conservancy), Ol Donyo Lodge (Chyulu Hills), and Tawi Lodge." }
+      { q: "Where do Rihanna guests stay in Amboseli?", a: "We curate stays at Tortilis Camp (private conservancy), Ol Donyo Lodge (Chyulu Hills), and Tawi Lodge." }
     ],
     bestTimeToVisit: "June to October and January to February (clear mountain views early morning and evening).",
     whyChooseUs: "We fly directly from Nairobi Wilson to private conservancy airstrips, avoiding the busy highway. Stay at Tortilis Camp or Ol Donyo Lodge in private conservancies where walking safaris, horseback riding, and rooftop star bed sleeping under the African sky await.",
@@ -512,7 +512,7 @@ const SAFARI_DESTINATIONS = [
     faqs: [
       { q: "What makes the Special Five unique?", a: "These 5 species have evolved specifically to thrive in northern Kenya's arid desert climates and are not found in the Maasai Mara or Serengeti." },
       { q: "Is on-foot rhino tracking safe?", a: "Yes. Guided by highly trained armed community rangers from the Northern Rangelands Trust with strict safety protocols." },
-      { q: "Where do Rihana guests stay in Samburu?", a: "We curate Moroccan-Swahili luxury suites at Sasaab (with private plunge pools) and Saruni Samburu perched on monumental granite kopjes." }
+      { q: "Where do Rihanna guests stay in Samburu?", a: "We curate Moroccan-Swahili luxury suites at Sasaab (with private plunge pools) and Saruni Samburu perched on monumental granite kopjes." }
     ],
     bestTimeToVisit: "June to October and December to March. Dry weather forces wildlife to gather densely along the river.",
     whyChooseUs: "We feature Moroccan-Swahili luxury at Sasaab with private cliffside plunge pools, panoramic suites on granite kopjes at Saruni Samburu, and exclusive access to Sera Conservancy for the only on-foot black rhino tracking experience in East Africa.",
@@ -558,7 +558,7 @@ const SAFARI_DESTINATIONS = [
     faqs: [
       { q: "Why are the elephants red in Tsavo?", a: "They dust-bathe in Tsavo's iron-rich red volcanic soil to protect their skin from the sun and insect bites." },
       { q: "How are Tsavo East and Tsavo West different?", a: "Tsavo West is rugged and volcanic with springs and lava flows; Tsavo East is flatter with vast savannah plains and the Galana River." },
-      { q: "Where do Rihana guests stay in Tsavo?", a: "We house our guests at Finch Hattons Luxury Tented Camp and Ol Donyo Lodge in the adjacent Chyulu Hills." }
+      { q: "Where do Rihanna guests stay in Tsavo?", a: "We house our guests at Finch Hattons Luxury Tented Camp and Ol Donyo Lodge in the adjacent Chyulu Hills." }
     ],
     bestTimeToVisit: "June to October and January to February. Crisp clear mornings with spectacular Mount Kilimanjaro vistas.",
     whyChooseUs: "Luxury tented palaces at Finch Hattons and Relais & Châteaux villa opulence at Ol Donyo Lodge. Experience horseback riding alongside giraffes, guided mountain biking, sunken photography hides, and private candlelit dinners beside natural hippo pools.",

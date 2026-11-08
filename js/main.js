@@ -299,10 +299,75 @@
     $('#ftco-nav').toggleClass('show');
   });
 
-  // Close mobile nav when clicking a link
+  // Close mobile nav when clicking a main nav link
   $('#ftco-nav .nav-link').on('click', function() {
     if ($(window).width() < 992) {
       $('#ftco-nav').removeClass('show');
+    }
+  });
+
+  // Nav dropdown side toggle buttons (Destinations and Experiences)
+  document.addEventListener('click', function(e) {
+    const toggleBtn = e.target.closest('.nav-dropdown-toggle');
+    if (toggleBtn) {
+      e.preventDefault();
+      e.stopPropagation();
+      const parent = toggleBtn.closest('.nav-dropdown-item');
+      if (!parent) return;
+      const isOpen = parent.classList.contains('open');
+
+      // Close all other dropdowns
+      document.querySelectorAll('.nav-dropdown-item').forEach(function(item) {
+        if (item !== parent) {
+          item.classList.remove('open');
+          const btn = item.querySelector('.nav-dropdown-toggle');
+          if (btn) btn.setAttribute('aria-expanded', 'false');
+        }
+      });
+
+      if (isOpen) {
+        parent.classList.remove('open');
+        toggleBtn.setAttribute('aria-expanded', 'false');
+      } else {
+        parent.classList.add('open');
+        toggleBtn.setAttribute('aria-expanded', 'true');
+      }
+      return;
+    }
+
+    // If clicked inside dropdown menu link
+    const menuLink = e.target.closest('.nav-dropdown-menu a');
+    if (menuLink) {
+      document.querySelectorAll('.nav-dropdown-item').forEach(function(item) {
+        item.classList.remove('open');
+        const btn = item.querySelector('.nav-dropdown-toggle');
+        if (btn) btn.setAttribute('aria-expanded', 'false');
+      });
+      if (window.innerWidth < 992) {
+        const nav = document.getElementById('ftco-nav');
+        if (nav) nav.classList.remove('show');
+      }
+      return;
+    }
+
+    // If clicked outside
+    if (!e.target.closest('.nav-dropdown-item')) {
+      document.querySelectorAll('.nav-dropdown-item').forEach(function(item) {
+        item.classList.remove('open');
+        const btn = item.querySelector('.nav-dropdown-toggle');
+        if (btn) btn.setAttribute('aria-expanded', 'false');
+      });
+    }
+  });
+
+  // Close nav dropdowns on Escape key
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' || e.keyCode === 27) {
+      document.querySelectorAll('.nav-dropdown-item').forEach(function(item) {
+        item.classList.remove('open');
+        const btn = item.querySelector('.nav-dropdown-toggle');
+        if (btn) btn.setAttribute('aria-expanded', 'false');
+      });
     }
   });
 

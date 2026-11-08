@@ -1,6 +1,6 @@
 <?php
 /**
- * RIHANA SIGNATURE SAFARI - EXPEDITION RESERVATION MAILER
+ * RIHANNA SIGNATURE SAFARI - EXPEDITION RESERVATION MAILER
  * Integrates PHPMailer 6.x with robust SMTP & native mail() fallback.
  * Sends reservation alerts to atelier architects and auto-confirmation to the guest.
  */
@@ -10,8 +10,8 @@ declare(strict_types=1);
 header('Content-Type: application/json; charset=UTF-8');
 
 // Configuration
-$atelierEmail = 'info@rihanasignaturesafari.com';
-$atelierName  = 'Rihana Signature Safari Atelier';
+$atelierEmail = 'info@rihannasignaturesafari.com';
+$atelierName  = 'Rihanna Signature Safari Atelier';
 
 // SMTP Configuration (Set your SMTP credentials here if using an external SMTP server)
 $useSmtp    = false; // Set to true to route via external SMTP
@@ -81,7 +81,7 @@ $atelierHtml = <<<HTML
 <body>
   <div class="card">
     <div class="header">
-      <h1>RIHANA SIGNATURE SAFARI</h1>
+      <h1>RIHANNA SIGNATURE SAFARI</h1>
       <p>New Luxury Expedition Reservation Dossier</p>
     </div>
 
@@ -132,7 +132,7 @@ $atelierHtml = <<<HTML
     </div>
 
     <div class="footer">
-      Rihana Signature Safari Reserve Atelier HQ &bull; Dar es Salaam, Tanzania<br>
+      Rihanna Signature Safari Reserve Atelier HQ &bull; Dar es Salaam, Tanzania<br>
       Automated Atelier Booking System &bull; Confidential Client Dossier
     </div>
   </div>
@@ -146,7 +146,7 @@ $guestHtml = <<<HTML
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Your Luxury Safari Request - Rihana Signature Safari</title>
+  <title>Your Luxury Safari Request - Rihanna Signature Safari</title>
   <style>
     body { font-family: 'Montserrat', Arial, sans-serif; background-color: #f7f5f0; margin: 0; padding: 30px; color: #192218; }
     .card { max-width: 650px; margin: 0 auto; background: #ffffff; border: 1px solid #dcd7ce; border-top: 4px solid #c8963e; padding: 35px; }
@@ -162,12 +162,12 @@ $guestHtml = <<<HTML
 <body>
   <div class="card">
     <div class="header">
-      <h1>RIHANA SIGNATURE SAFARI</h1>
+      <h1>RIHANNA SIGNATURE SAFARI</h1>
       <p>Luxury Tanzania & Kenya Safari Atelier</p>
     </div>
 
     <p>Dear {$fullName},</p>
-    <p>Thank you for inquiring with Rihana Signature Safari. We have formally received your reservation request for the following bespoke expedition:</p>
+    <p>Thank you for inquiring with Rihanna Signature Safari. We have formally received your reservation request for the following bespoke expedition:</p>
 
     <div class="dossier">
       <h4>{$packageTitle}</h4>
@@ -181,11 +181,11 @@ $guestHtml = <<<HTML
 
     <p>Warmest regards from Tanzania,<br>
     <strong>The Safari Architecture Team</strong><br>
-    Rihana Signature Safari Atelier</p>
+    Rihanna Signature Safari Atelier</p>
 
     <div class="footer">
       The Reserve Atelier, Masaki Peninsula, Dar es Salaam, Tanzania<br>
-      Tel: +255 676 063 791 &bull; Email: info@rihanasignaturesafari.com
+      Tel: +255 676 063 791 &bull; Email: info@rihannasignaturesafari.com
     </div>
   </div>
 </body>
@@ -222,9 +222,9 @@ if (file_exists($phpMailerPath) && file_exists($smtpPath) && file_exists($except
         }
 
         // Send to Atelier
-        $mail->setFrom('reservations@rihanasignaturesafari.com', 'Rihana Safari Atelier');
+        $mail->setFrom($atelierEmail, 'Rihanna Safari Atelier');
         $mail->addAddress($atelierEmail, $atelierName);
-        $mail->addReplyTo($email, $fullName);
+                $mail->addReplyTo($email, $fullName);
         $mail->isHTML(true);
         $mail->Subject = 'New Safari Booking Request: ' . $packageTitle . ' - ' . $fullName;
         $mail->Body    = $atelierHtml;
@@ -246,11 +246,11 @@ if (file_exists($phpMailerPath) && file_exists($smtpPath) && file_exists($except
             } else {
                 $guestMail->isMail();
             }
-            $guestMail->setFrom('reservations@rihanasignaturesafari.com', 'Rihana Signature Safari');
+            $guestMail->setFrom($atelierEmail, 'Rihanna Signature Safari');
             $guestMail->addAddress($email, $fullName);
             $guestMail->addReplyTo($atelierEmail, $atelierName);
             $guestMail->isHTML(true);
-            $guestMail->Subject = 'Expedition Dossier Request: ' . $packageTitle . ' | Rihana Signature Safari';
+            $guestMail->Subject = 'Expedition Dossier Request: ' . $packageTitle . ' | Rihanna Signature Safari';
             $guestMail->Body    = $guestHtml;
             $guestMail->send();
         } catch (\Throwable $e) {
@@ -267,8 +267,8 @@ if (file_exists($phpMailerPath) && file_exists($smtpPath) && file_exists($except
 if (!$mailSent) {
     $headers  = "MIME-Version: 1.0\r\n";
     $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
-    $headers .= "From: Rihana Signature Safari <reservations@rihanasignaturesafari.com>\r\n";
-    $headers .= "Reply-To: {$fullName} <{$email}>\r\n";
+    $headers .= "From: Rihanna Signature Safari <{$atelierEmail}>\r\n";
+        $headers .= "Reply-To: {$fullName} <{$email}>\r\n";
     $headers .= "X-Mailer: PHP/" . phpversion();
 
     $subject = 'New Safari Booking Request: ' . $packageTitle . ' - ' . $fullName;
