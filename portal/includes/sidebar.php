@@ -1,6 +1,6 @@
 <?php
 /**
- * RIHANNA SIGNATURE SAFARI - ATELIER PORTAL
+ * RIHANNA SIGNATURE SAFARI - ADMIN PORTAL
  * Sidebar Navigation
  */
 

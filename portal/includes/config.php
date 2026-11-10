@@ -1,6 +1,6 @@
 <?php
 /**
- * RIHANNA SIGNATURE SAFARI - ATELIER MANAGEMENT SUITE
+ * RIHANNA SIGNATURE SAFARI - PORTAL MANAGEMENT SUITE
  * Database & Core System Configuration
  * Plain PHP & MySQL Architecture with Self-Healing Auto-Migration
  */
@@ -28,7 +28,7 @@ define('DB_PASS', getenv('DB_PASS') !== false ? getenv('DB_PASS') : '');
 
 // Application Constants
 define('ATELIER_NAME', 'Rihanna Signature Safari');
-define('PORTAL_TITLE', 'Rihanna Atelier Portal');
+define('PORTAL_TITLE', 'Rihanna Signature Safari Portal');
 define('PORTAL_URL', '/portal');
 define('SITE_URL', '/');
 define('DEFAULT_ADMIN_USER', 'admin');
@@ -68,7 +68,7 @@ function getDbConnection(): PDO {
         return $pdo;
     } catch (Throwable $e) {
         die('<div style="font-family:sans-serif;max-width:600px;margin:80px auto;padding:30px;background:#fff5f5;border-left:4px solid #c8963e;border-radius:4px;box-shadow:0 4px 15px rgba(0,0,0,0.08);">' .
-            '<h2 style="color:#233522;margin-top:0;">Rihanna Signature Safari Atelier</h2>' .
+            '<h2 style="color:#233522;margin-top:0;">Rihanna Signature Safari</h2>' .
             '<p style="color:#666;">Unable to connect to the MySQL database engine.</p>' .
             '<pre style="background:#f0eae1;padding:12px;border-radius:3px;font-size:12px;overflow-x:auto;">' . htmlspecialchars($e->getMessage()) . '</pre>' .
             '<p style="font-size:13px;color:#888;">Please verify your MySQL service is running and credentials in config.php are valid.</p>' .

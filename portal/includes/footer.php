@@ -1,6 +1,6 @@
 <?php
 /**
- * RIHANNA SIGNATURE SAFARI - ATELIER PORTAL
+ * RIHANNA SIGNATURE SAFARI - ADMIN PORTAL
  * Master Layout Footer
  */
 
@@ -13,7 +13,7 @@ declare(strict_types=1);
           &copy; <?= date('Y') ?> Rihanna Signature Safari Ltd. All rights reserved.
         </div>
         <div>
-          <span style="color: var(--portal-gold);"><i class="fa-solid fa-shield-halved mr-1"></i> Secure Atelier Portal</span>
+          <span style="color: var(--portal-gold);"><i class="fa-solid fa-shield-halved mr-1"></i> Rihanna Signature Safari Portal</span>
         </div>
       </footer>
     </div> <!-- .portal-main -->

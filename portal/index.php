@@ -1,11 +1,11 @@
 <?php
 /**
- * RIHANNA SIGNATURE SAFARI - ATELIER PORTAL
+ * RIHANNA SIGNATURE SAFARI - ADMIN PORTAL
  * Master Dashboard
  */
 
 declare(strict_types=1);
-$pageTitle = 'Executive Atelier Dashboard';
+$pageTitle = 'Executive Dashboard';
 require_once __DIR__ . '/includes/header.php';
 
 // Fetch Metrics

@@ -1,5 +1,5 @@
 /**
- * RIHANNA SIGNATURE SAFARI - ATELIER PORTAL JS
+ * RIHANNA SIGNATURE SAFARI - ADMIN PORTAL JS
  * Modern Admin Interactions & Dynamic Tools
  */
 

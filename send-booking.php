@@ -2,7 +2,7 @@
 /**
  * RIHANNA SIGNATURE SAFARI - EXPEDITION RESERVATION MAILER
  * Integrates PHPMailer 6.x with robust SMTP & native mail() fallback.
- * Sends reservation alerts to atelier architects and auto-confirmation to the guest.
+ * Sends reservation alerts to safari team and auto-confirmation to the guest.
  */
 
 declare(strict_types=1);
@@ -11,7 +11,7 @@ header('Content-Type: application/json; charset=UTF-8');
 
 // Configuration
 $atelierEmail = 'info@rihannasignaturesafari.com';
-$atelierName  = 'Rihanna Signature Safari Atelier';
+$atelierName  = 'Rihanna Signature Safari';
 
 // SMTP Configuration (Set your SMTP credentials here if using an external SMTP server)
 $useSmtp    = false; // Set to true to route via external SMTP
@@ -132,8 +132,8 @@ $atelierHtml = <<<HTML
     </div>
 
     <div class="footer">
-      Rihanna Signature Safari Reserve Atelier HQ &bull; Dar es Salaam, Tanzania<br>
-      Automated Atelier Booking System &bull; Confidential Client Dossier
+      Rihanna Signature Safari HQ &bull; Dar es Salaam, Tanzania<br>
+      Automated Booking System &bull; Confidential Client Dossier
     </div>
   </div>
 </body>
@@ -163,7 +163,7 @@ $guestHtml = <<<HTML
   <div class="card">
     <div class="header">
       <h1>RIHANNA SIGNATURE SAFARI</h1>
-      <p>Luxury Tanzania & Kenya Safari Atelier</p>
+      <p>Luxury Tanzania & Kenya Safaris</p>
     </div>
 
     <p>Dear {$fullName},</p>
@@ -181,10 +181,10 @@ $guestHtml = <<<HTML
 
     <p>Warmest regards from Tanzania,<br>
     <strong>The Safari Architecture Team</strong><br>
-    Rihanna Signature Safari Atelier</p>
+    Rihanna Signature Safari</p>
 
     <div class="footer">
-      The Reserve Atelier, Masaki Peninsula, Dar es Salaam, Tanzania<br>
+      Masaki Peninsula, Dar es Salaam, Tanzania<br>
       Tel: +255 676 063 791 &bull; Email: info@rihannasignaturesafari.com
     </div>
   </div>
@@ -221,8 +221,8 @@ if (file_exists($phpMailerPath) && file_exists($smtpPath) && file_exists($except
             $mail->isMail();
         }
 
-        // Send to Atelier
-        $mail->setFrom($atelierEmail, 'Rihanna Safari Atelier');
+        // Send to Safari Team
+        $mail->setFrom($atelierEmail, 'Rihanna Signature Safari');
         $mail->addAddress($atelierEmail, $atelierName);
                 $mail->addReplyTo($email, $fullName);
         $mail->isHTML(true);
